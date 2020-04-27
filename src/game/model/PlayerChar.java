@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import model.items.*;
 
-public class Character 
+public class PlayerChar 
 {
     private String name;
     private int maxHealth;
@@ -14,7 +14,7 @@ public class Character
     private Armour chosenArmour;
     private int gold;
 
-    public Character(String name, int currHealth, Weapon cheapestWep,
+    public PlayerChar(String name, Weapon cheapestWep,
             Armour cheapestArmour)
     {
         this.name = name;
@@ -62,6 +62,16 @@ public class Character
         return gold;
     }
 
+    public Item getChosenWep()
+    {
+        return chosenWep;
+    }
+
+    public Item getChosenArmour()
+    {
+        return chosenArmour;
+    }
+
     public void setCurrHealth(int damage, int defence)
     {
         currHealth = currHealth - Math.max(0, damage - defence);
@@ -73,6 +83,26 @@ public class Character
         "Health: " + getCurrHealth() + "/" + getMaxHealth() + 
         "Inventory: ///////////NEED TO IMPLEMENT THIS LATER??????\n" + 
         "Gold: " + getGold();
+    }
+
+    public void setGold(int gold)
+    {
+        this.gold = gold;
+    }
+
+    public void addItem(String name, Item item)
+    {
+        inventory.put(name, item);
+    }
+
+    public void removeItem(String name)
+    {
+        inventory.remove(name);
+    }
+
+    public void setName(String name)
+    {
+        this.name = name;
     }
 
 }

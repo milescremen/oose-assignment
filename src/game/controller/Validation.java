@@ -35,7 +35,7 @@ public class Validation
         return value;
     }
 
-    public static boolean validateFileString(String name)
+    public static boolean validateString(String name)
     {
         boolean valid = true;
         
@@ -62,12 +62,12 @@ public class Validation
     {
         boolean valid = true; 
 
-        if(!validateFileString(lineArray[0]) && 
+        if(!validateString(lineArray[0]) && 
             !validateFileInt(lineArray[1]) &&
             !validateFileInt(lineArray[2]) &&
             !validateFileInt(lineArray[3]) &&
-            !validateFileString(lineArray[4]) &&
-            !validateFileString(lineArray[5])
+            !validateString(lineArray[4]) &&
+            !validateString(lineArray[5])
         )
         { 
             valid = false;
@@ -80,11 +80,11 @@ public class Validation
     {
         boolean valid = true;
 
-        if(!validateFileString(lineArray[0]) && 
+        if(!validateString(lineArray[0]) && 
             !validateFileInt(lineArray[1]) &&
             !validateFileInt(lineArray[2]) &&
             !validateFileInt(lineArray[3]) &&
-            !validateFileString(lineArray[4])
+            !validateString(lineArray[4])
         )
         {
             valid = false;
@@ -97,7 +97,7 @@ public class Validation
     {
         boolean valid = true;
 
-        if(!validateFileString(lineArray[0]) && 
+        if(!validateString(lineArray[0]) && 
             !validateFileInt(lineArray[1]) &&
             !validateFileInt(lineArray[2]) &&
             !validateFileInt(lineArray[3]) &&
