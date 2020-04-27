@@ -67,6 +67,12 @@ public class Character
         currHealth = currHealth - Math.max(0, damage - defence);
     }
 
-
+    public String getCharAttributes()
+    {
+        return "Name: " + getName() + "\n" + 
+        "Health: " + getCurrHealth() + "/" + getMaxHealth() + 
+        "Inventory: ///////////NEED TO IMPLEMENT THIS LATER??????\n" + 
+        "Gold: " + getGold();
+    }
 
 }

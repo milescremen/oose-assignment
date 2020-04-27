@@ -9,17 +9,17 @@ public class Weapon implements Item
     private int cost;
     private int minDamage;
     private int maxDamage;
-    private String type;
+    private String weaponType;
     private String damageType;
 
-    public Weapon(String name, int cost, int minDamage, int maxDamage, String type, String damageType)
+    public Weapon(String name, int cost, int minDamage, int maxDamage, String damageType, String weaponType)
     {
         this.name = name;
         this.cost = cost;
         this.minDamage = minDamage;
         this.maxDamage = maxDamage;
-        this.type = type;
         this.damageType = damageType;
+        this.weaponType = weaponType;
     }
 
     @Override
@@ -46,7 +46,7 @@ public class Weapon implements Item
 
     public String getType()
     {
-        return type;
+        return weaponType;
     }
 
     public String getDamageType()
