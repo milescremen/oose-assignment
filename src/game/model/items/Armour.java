@@ -41,4 +41,11 @@ public class Armour implements Item
         return randomDefence;
     }
 
+    public String toString()
+    {
+        return "Name: " + name + " Cost: " + cost + " Min Defence: " + minDefence +
+                " Max Defence: " + maxDefence + " Material: " + material;
+    }
+    
+
 }

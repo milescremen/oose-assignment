@@ -1,7 +1,17 @@
 package model.enemies;
 
-public class Dragon extends Enemy
+public class Dragon implements Enemy
 {
+    private String species;
+    private int maxHealth;
+    private int currHealth;
+    private int minDamage;
+    private int maxDamage;
+    private int minDefence;
+    private int maxDefence;
+    private int goldAward;
+    private float intialProb;
+
     public Dragon()
     {
         this.species = "Dragon";
@@ -12,6 +22,7 @@ public class Dragon extends Enemy
         this.minDefence = 15;
         this.maxDefence = 20;
         this.goldAward = 100;
+        this.initialProb = 0.0f;
     }
 
     @Override

@@ -7,10 +7,12 @@ import model.items.DamagePotion;
 import model.items.HealingPotion;
 import model.items.Item;
 import model.items.Weapon;
+import model.*;
+import java.util.*;
 
 public class ShopFileManager 
 {
-    public static void importFile(String fileName)
+    public static void importFile(String fileName, Shop shop)
     {
         BufferedReader fileStream = null;
         String line;
@@ -19,21 +21,24 @@ public class ShopFileManager
         {
             fileStream = new BufferedReader(new FileReader(fileName));
             line = fileStream.readLine();
+            
 
             while(line != null)
             {
-                processLine(line);
+
+                System.out.println("LINE: " + line);
+                processLine(line, shop);
                 line = fileStream.readLine();
             }
         }
         catch(IOException ex)
         {
-
+            System.out.println("IO EXCEPTION");
+            System.out.println(ex.getMessage());
         }
-        
     }
 
-    public static void processLine(String line)
+    public static void processLine(String line, Shop shop)
     {
         String[] lineArray;
         lineArray = line.split(",");
@@ -41,22 +46,25 @@ public class ShopFileManager
 
         if(lineArray[0].equals("W") && lineArray.length == 7)
         {
-            processWeapon(lineArray);
+            newItem = processWeapon(lineArray);
         }
         else if(lineArray[0].equals("A") && lineArray.length == 6)
         {
-            processArmour(lineArray);
+            newItem = processArmour(lineArray);
         }
         else if(lineArray[0].equals("P"))
         {
-            processArmour(lineArray);
+            newItem = processArmour(lineArray);
         }
 
         if(newItem == null)
         {
-            //Exception
+           System.out.println("newItem is null"); //Exception
         }
-
+        else
+        {
+            shop.addItem(newItem);
+        }
     }
     
     public static Item processWeapon(String[] lineArray)
@@ -73,24 +81,25 @@ public class ShopFileManager
         {
             try
             {
-                name = lineArray[1];
-                cost = Integer.parseInt(lineArray[2]);
-                minDamage = Integer.parseInt(lineArray[3]);
-                maxDamage = Integer.parseInt(lineArray[4]);
-                damageType = lineArray[5];
-                weaponType = lineArray[6];
+                name = lineArray[1].trim();
+                cost = Integer.parseInt(lineArray[2].trim());
+                minDamage = Integer.parseInt(lineArray[3].trim());
+                maxDamage = Integer.parseInt(lineArray[4].trim());
+                damageType = lineArray[5].trim();
+                weaponType = lineArray[6].trim();
 
                 newItem = new Weapon(name, cost, minDamage, maxDamage, damageType, weaponType);
 
             }
             catch(NumberFormatException e)
             {
+                System.out.println("Weapon invalid parse");
                 //Invalid number
             }
-
         }
         else
         {
+            System.out.println("Invalid Weapon");
             //throw exception
         }
         return newItem;
@@ -110,21 +119,24 @@ public class ShopFileManager
         {
             try
             {
-                name = lineArray[1];
-                cost = Integer.parseInt(lineArray[2]);
-                minDefence = Integer.parseInt(lineArray[3]);
-                maxDefence = Integer.parseInt(lineArray[4]);
-                material = lineArray[5];
+                name = lineArray[1].trim();
+                cost = Integer.parseInt(lineArray[2].trim());
+                minDefence = Integer.parseInt(lineArray[3].trim());
+                maxDefence = Integer.parseInt(lineArray[4].trim());
+                material = lineArray[5].trim();
 
                 newItem = new Armour(name, cost, minDefence, maxDefence, material);
             }
             catch(NumberFormatException e)
             {
+                System.out.println("Armour invalid parse");
                 //Invalid number
+                System.out.println(e.getMessage());
             }
         }
         else
         {
+            System.out.println("Invalid armour");
             //throw exception
         }
         return newItem;
@@ -144,10 +156,10 @@ public class ShopFileManager
         {
             try
             {
-                name = lineArray[1];
-                cost = Integer.parseInt(lineArray[2]);
-                minEffect = Integer.parseInt(lineArray[3]);
-                maxEffect = Integer.parseInt(lineArray[4]);
+                name = lineArray[1].trim();
+                cost = Integer.parseInt(lineArray[2].trim());
+                minEffect = Integer.parseInt(lineArray[3].trim());
+                maxEffect = Integer.parseInt(lineArray[4].trim());
 
                 if(lineArray[4].equals("H")) 
                 {
@@ -160,12 +172,14 @@ public class ShopFileManager
             }
             catch(NumberFormatException e)
             {
+                System.out.println("Potion invalid parse");
                 //Invalid number
             }
 
         }
         else
         {
+            System.out.println("Invalid Potion");
             //throw exception
         }
         return newItem;

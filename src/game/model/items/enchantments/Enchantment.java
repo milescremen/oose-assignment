@@ -4,6 +4,7 @@ import model.items.Item;
 public abstract class Enchantment implements Item
 {
     protected Item newItem;
+    
     public Enchantment(Item newItem)
     {
         this.newItem = newItem;

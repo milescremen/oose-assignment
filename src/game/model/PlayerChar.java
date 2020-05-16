@@ -10,12 +10,12 @@ public class PlayerChar
     private int maxHealth;
     private int currHealth;
     private Map<String, Item> inventory;
-    private Weapon chosenWep;
-    private Armour chosenArmour;
+    private Item chosenWep;
+    private Item chosenArmour;
     private int gold;
 
-    public PlayerChar(String name, Weapon cheapestWep,
-            Armour cheapestArmour)
+    public PlayerChar(String name, Item cheapestWep,
+            Item cheapestArmour)
     {
         this.name = name;
         this.maxHealth = 30;
@@ -25,6 +25,17 @@ public class PlayerChar
         this.chosenArmour = cheapestArmour;
         /* Default gold is 100 */
         this.gold = 100;
+    }
+
+    public PlayerChar(String name, int maxHealth, int currHealth, 
+        Item chosenWep, Item chosenArmour, int gold)
+    {
+        this.name = name;
+        this.maxHealth = maxHealth;
+        this.currHealth = currHealth;
+        this.chosenWep = chosenWep;
+        this.chosenArmour = chosenArmour;
+        this.gold = gold;
     }
 
     public String getName()
@@ -79,10 +90,15 @@ public class PlayerChar
 
     public String getCharAttributes()
     {
-        return "Name: " + getName() + "\n" + 
-        "Health: " + getCurrHealth() + "/" + getMaxHealth() + 
-        "Inventory: ///////////NEED TO IMPLEMENT THIS LATER??????\n" + 
-        "Gold: " + getGold();
+        return 
+        "---------------------------------------\n" +
+        "Name: " + getName() + "\n" + 
+        "Health: " + getCurrHealth() + "/" + getMaxHealth() + "\n" +
+        "Inventory: " + inventory.keySet() + "\n" +
+        "Current Weapon: " + chosenWep.getName() + "\n" +
+        "Current Armour: " + chosenArmour.getName() + "\n" +
+        "Gold: " + getGold() + "\n" +
+        "---------------------------------------\n";
     }
 
     public void setGold(int gold)
@@ -105,4 +121,18 @@ public class PlayerChar
         this.name = name;
     }
 
+    public void setWeapon(Weapon weapon)
+    {
+        this.chosenWep = weapon;
+    }
+
+    public void setArmour(Armour armour)
+    {
+        this.chosenArmour = armour;
+    }
+
+    public Item getWeapon(String weaponName)
+    {
+        return inventory.get(weaponName);
+    }
 }

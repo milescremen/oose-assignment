@@ -6,6 +6,7 @@ import model.Shop;
 import model.items.Armour;
 import model.items.Weapon;
 import java.util.*;
+import controller.*;
 
 
 public class Menu 
@@ -16,6 +17,10 @@ public class Menu
         Weapon cheapestWep = new Weapon("cheapWep", 30, 5, 10, "damageType", "weaponType");
         Armour cheapestArmour = new Armour("cheapArm", 30, 5, 10, "material");
         PlayerChar character = new PlayerChar("Merles", cheapestWep, cheapestArmour);
+        ShopFileManager.importFile("resources/shop_data.txt", shop);
+        System.out.println(shop.getInventory().keySet());
+
+        character.addItem("cheapArm", cheapestArmour);
         Menu.mainMenu(shop, character);
 
     }
@@ -23,7 +28,8 @@ public class Menu
     public static void mainMenu(Shop shop, PlayerChar character)
     {
         int selection;
-        String prompt = "1. Go to shop\n" + 
+        String prompt = "Player Attributes\n" + character.getCharAttributes() + "\n" +
+                        "1. Go to shop\n" + 
                         "2. Choose Character Name\n" +
                         "3. Choose Weapon\n" +
                         "4. Choose Armour\n" +
@@ -31,7 +37,7 @@ public class Menu
                         "6. Exit game\n";
         do
         {
-            selection = Validation.validateInteger(prompt, 1, 6);
+            selection = Validation.getIntegerInput(prompt, 1, 6);
             switch(selection) 
             {
                 case 1:
@@ -41,13 +47,12 @@ public class Menu
                 case 2:
                     nameMenu(character);
                     break;
-                    
                 case 3:
-                    weaponMenu(); 
+                    weaponMenu(character); 
                     break;
         
                 case 4:
-                    armourMenu(); 
+                    armourMenu(character); 
                     break;
 
                 case 5:
@@ -67,17 +72,66 @@ public class Menu
     }
 
 
-
-
-    private static void armourMenu()
+    private static void weaponMenu(PlayerChar character)
     {
+        int selection;
+        String input;
+
+        String prompt = "Weapons available to equip\n" + " ITEMS ????\n" +
+                        "1. Enter item name\n" + 
+                        "2. Go to previous menu\n";
+        do
+        {
+            selection = Validation.getIntegerInput(prompt, 1, 2);
+            switch(selection) 
+            {
+                case 1:
+                    input = Validation.getStringInput("Please enter the name of the weapon you wish to equip");
+
+                    System.out.println("NOT IMPLEMENTED YET");
+                    break;
+        
+                case 2:
+                    System.out.println("Returning to previous menu...");
+                    break;
+                    
+                default:
+                    break;
+            }
+        } while(selection != 2);
+    }
+
+
+    private static void armourMenu(PlayerChar character)
+    {
+        int selection;
+        String input;
+
+        String prompt = "Armour available to equip\n" + " ITEMS ????\n" +
+                        "1. Enter item name\n" + 
+                        "2. Go to previous menu\n";
+        do
+        {
+            selection = Validation.getIntegerInput(prompt, 1, 2);
+            switch(selection) 
+            {
+                case 1:
+                    input = Validation.getStringInput("Please enter the name of the armour you wish to equip");
+
+                    System.out.println("NOT IMPLEMENTED YET");
+                    break;
+        
+                case 2:
+                    System.out.println("Returning to previous menu...");
+                    break;
+                    
+                default:
+                    break;
+            }
+        } while(selection != 2);
     }
 
     private static void battleMenu()
-    {
-    }
-
-    private static void weaponMenu()
     {
     }
 
@@ -87,36 +141,24 @@ public class Menu
         String prompt = "Current name: " + character.getName() + "\n" +
                         "1. Change character name\n" +
                         "2. Return to previous menu\n";
-        selection = Validation.validateInteger(prompt, 1, 2);
+
+        selection = Validation.getIntegerInput(prompt, 1, 2);
         switch(selection) 
         {
             case 1:
-                Scanner sc = new Scanner(System.in);
                 String input;
-                Item item;
-                System.out.println("Please enter a new character name");
-                            
-                input = sc.nextLine(); 
-
-                if(!Validation.validateString(input))
-                {
-                    //throw exception 
-                    System.out.println("Invalid String");
-                }
-
+                
+                input = Validation.getStringInput("Please enter a new character name");
                 character.setName(input);
+
                 System.out.println("Your new character name is " + character.getName());
                 break;
             case 2:
                 System.out.println("Returning to previous menu...");
                 break;
-
             default:
                 break;
         }
-
     }
-
-
 }
 

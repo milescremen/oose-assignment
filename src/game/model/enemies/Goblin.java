@@ -2,6 +2,16 @@ package model.enemies;
 
 public class Goblin extends Enemy
 {
+    private String species;
+    private int maxHealth;
+    private int currHealth;
+    private int minDamage;
+    private int maxDamage;
+    private int minDefence;
+    private int maxDefence;
+    private int goldAward;
+    private float initialProb;
+
     public Goblin()
     {
         this.species = "Goblin";
@@ -12,6 +22,7 @@ public class Goblin extends Enemy
         this.minDefence = 4;
         this.maxDefence = 8;
         this.goldAward = 20;
+        this.initialProb = 0.3f;
     }
 
     @Override

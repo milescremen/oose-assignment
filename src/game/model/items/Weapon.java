@@ -53,5 +53,11 @@ public class Weapon implements Item
     {
         return damageType;
     }
+
+    public String toString()
+    {
+        return "Name: " + name + " Cost: " + cost + " Min Damage: " + minDamage +
+                " Max Damage: " + maxDamage + " Weapon Type: " + weaponType + " Damage type: " + damageType;
+    }
     
 }
