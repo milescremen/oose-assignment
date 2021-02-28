@@ -2,16 +2,6 @@ package model.enemies;
 
 public class Dragon implements Enemy
 {
-    private String species;
-    private int maxHealth;
-    private int currHealth;
-    private int minDamage;
-    private int maxDamage;
-    private int minDefence;
-    private int maxDefence;
-    private int goldAward;
-    private float intialProb;
-
     public Dragon()
     {
         this.species = "Dragon";
@@ -25,11 +15,4 @@ public class Dragon implements Enemy
         this.initialProb = 0.0f;
     }
 
-    @Override
-    public void specialAbility()
-    {
-        // 35 chance of one of the following,
-        // a) damge inflicted will double (25% chance)
-        // b) it will recover 10 health (10% chance)
-    }
 }

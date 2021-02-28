@@ -13,6 +13,7 @@ public class PlayerChar
     private Item chosenWep;
     private Item chosenArmour;
     private int gold;
+    private List<Observer> observers;
 
     public PlayerChar(String name, Item cheapestWep,
             Item cheapestArmour)
@@ -25,6 +26,7 @@ public class PlayerChar
         this.chosenArmour = cheapestArmour;
         /* Default gold is 100 */
         this.gold = 100;
+        this.observers = new ArrayList<Observer>();
     }
 
     public PlayerChar(String name, int maxHealth, int currHealth, 
@@ -109,11 +111,13 @@ public class PlayerChar
     public void addItem(String name, Item item)
     {
         inventory.put(name, item);
+        notifyObservers();
     }
 
     public void removeItem(String name)
     {
         inventory.remove(name);
+        notifyObservers();
     }
 
     public void setName(String name)
@@ -134,5 +138,23 @@ public class PlayerChar
     public Item getWeapon(String weaponName)
     {
         return inventory.get(weaponName);
+    }
+
+    public void addObserver(Observer obs)
+    {
+        observers.add(obs);
+    }
+
+    public void removeObserver(Observer obs)
+    {
+        observers.remove(obs);
+    }
+
+    public void notifyObservers()
+    {
+        for(Observer obs: observers)
+        {
+            obs.viewUpdated;
+        }
     }
 }

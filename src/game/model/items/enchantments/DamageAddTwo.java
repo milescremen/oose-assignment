@@ -1,5 +1,5 @@
 package model.items.enchantments;
-import model.items.Item;
+import model.items.*;
 
 public class DamageAddTwo extends Enchantment
 {

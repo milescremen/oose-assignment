@@ -52,7 +52,6 @@ public class ShopMenu
 
         String input;
 
-
         String prompt = "Items Available\n" + items + "\n" +
                         "1. Enter item name\n" + 
                         "2. Go to previous menu\n";

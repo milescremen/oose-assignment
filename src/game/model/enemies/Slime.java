@@ -2,16 +2,6 @@ package model.enemies;
 
 public class Slime extends Enemy
 {
-    private String species;
-    private int maxHealth;
-    private int currHealth;
-    private int minDamage;
-    private int maxDamage;
-    private int minDefence;
-    private int maxDefence;
-    private int goldAward;
-    private float initialProb;
-
     public Slime()
     {
         this.species = "Slime";
@@ -23,12 +13,6 @@ public class Slime extends Enemy
         this.maxDefence = 2;
         this.goldAward = 10;
         this.initialProb = 0.5f;
-    }
-
-    @Override
-    public void specialAbility()
-    {
-        // somehow make damage = 0
     }
 
 }

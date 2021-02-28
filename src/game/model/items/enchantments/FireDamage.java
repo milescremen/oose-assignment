@@ -1,7 +1,7 @@
 package model.items.enchantments;
 
 import java.util.Random;
-import model.items.Item;
+import model.items.*;
 
 public class FireDamage extends Enchantment 
 {

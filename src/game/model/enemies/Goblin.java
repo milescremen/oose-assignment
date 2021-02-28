@@ -2,16 +2,6 @@ package model.enemies;
 
 public class Goblin extends Enemy
 {
-    private String species;
-    private int maxHealth;
-    private int currHealth;
-    private int minDamage;
-    private int maxDamage;
-    private int minDefence;
-    private int maxDefence;
-    private int goldAward;
-    private float initialProb;
-
     public Goblin()
     {
         this.species = "Goblin";
@@ -25,9 +15,4 @@ public class Goblin extends Enemy
         this.initialProb = 0.3f;
     }
 
-    @Override
-    public void specialAbility()
-    {
-        // 50% chance that its attack will have 3 extra damage
-    }
 }

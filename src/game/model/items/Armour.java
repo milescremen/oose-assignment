@@ -17,7 +17,6 @@ public class Armour implements Item
         this.maxDefence = maxDefence;
         this.material = material;
     }
-    
 
     @Override
     public String getName()

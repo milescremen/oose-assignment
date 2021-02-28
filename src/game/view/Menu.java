@@ -131,10 +131,6 @@ public class Menu
         } while(selection != 2);
     }
 
-    private static void battleMenu()
-    {
-    }
-
     private static void nameMenu(PlayerChar character)
     {
         int selection;
